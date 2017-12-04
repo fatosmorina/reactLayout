@@ -21,7 +21,7 @@
           <div>
             <Navbar brand="ReactLayout"/>
             <Jumbotron heading="Hello there" text="This is a simple project demonstrating the usage of React"/>
-            <Page />
+            <Page currentPage='home'/>
           </div>
           )
         }
@@ -48,7 +48,7 @@
           return (
             <div>
               <div className="container">
-                This is the homepage
+                <h2>{this.props.currentPage.charAt(0).toUpperCase() + this.props.currentPage.slice(1)}</h2>
               </div>
             </div>
           )
