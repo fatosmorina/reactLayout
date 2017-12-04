@@ -56,6 +56,12 @@
       });
 
       var Navbar = React.createClass({
+        getDefaultProps: function(){
+          return {
+            brand: 'DefaultBrand'
+          }
+        },
+
         render: function(){
           return (
             <nav className="navbar navbar-default">
