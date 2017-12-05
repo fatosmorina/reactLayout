@@ -19,7 +19,7 @@
         render: function() {
           return (
           <div>
-            <Navbar brand="ReactLayout"/>
+            <Navbar currentPage='home' brand="ReactLayout"/>
             <Jumbotron heading="Hello there" text="This is a simple project demonstrating the usage of React"/>
             <Page currentPage='home'/>
           </div>
@@ -45,6 +45,16 @@
 
      var Page = React.createClass({
         render: function(){
+          var pageContent;
+          if (this.props.currentPage == 'home'){
+            pageContent = "You are currently viewing the home page";
+          } else if(this.props.currentPage == 'about'){
+            pageContent = "You are currently viewing the about page";
+          } else if (this.props.currentPage == 'contact'){
+            pageContent = "You are currently viewing the contact page";
+          } else {
+            pageContent = "You are currently viewing an unknown page";
+          }
           return (
             <div>
               <div className="container">
@@ -73,9 +83,9 @@
                  </div>
                  <div id="navbar">
                     <ul className="nav navbar-nav">
-                      <li className="{(this.props.currentPage === 'home' ?) ? 'active' : '' }"><a href="#">Home</a></li>
-                      <li className="{(this.props.currentPage === 'contact' ?) ? 'active' : '' }"><a href="#">Contact</a></li>
-                      <li className="{(this.props.currentPage === 'about' ?) ? 'active' : '' }"><a href="#">About</a></li>
+                      <li className={(this.props.currentPage === 'home' ?) ? 'active' : '' } ><a href="#">Home</a></li>
+                      <li className={(this.props.currentPage === 'contact' ?) ? 'active' : '' } ><a href="#">Contact</a></li>
+                      <li className={(this.props.currentPage === 'about' ?) ? 'active' : '' } ><a href="#">About</a></li>
                     </ul>
                  </div>
                 </div>
