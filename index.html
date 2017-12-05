@@ -24,15 +24,15 @@
         getDefaultProps(){
           return {
             brand: 'ReactLayout',
-            heading: '',
-            text: ''
+            heading: 'Hello there!',
+            text: 'This is just a simple demo'
           }
         },
         render: function() {
           return (
           <div>
-            <Navbar currentPage={this.state.currentPage} brand="ReactLayout"/>
-            <Jumbotron heading="Hello there" text="This is a simple project demonstrating the usage of React"/>
+            <Navbar currentPage={this.state.currentPage} brand={this.props.brand}/>
+            <Jumbotron heading={this.props.heading} text={this.props.text}/>
             <Page currentPage={this.state.currentPage} />
           </div>
           )
