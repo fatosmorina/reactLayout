@@ -11,7 +11,7 @@
 
   </head>
   <body>
-    <div id="greeting-div"></div>
+    <div id="root"></div>
 
     <script type="text/babel">
 
@@ -20,6 +20,9 @@
           return {
             currentPage: 'home'
           }
+        },
+        handleChange(page){
+          this.setState({currentPage: page})
         },
         getDefaultProps(){
           return {
@@ -31,7 +34,7 @@
         render: function() {
           return (
           <div>
-            <Navbar currentPage={this.state.currentPage} brand={this.props.brand}/>
+            <Navbar currentPage={this.state.currentPage} brand={this.props.brand} change={this.handleChange}/>
             <Jumbotron heading={this.props.heading} text={this.props.text}/>
             <Page currentPage={this.state.currentPage} />
           </div>
@@ -80,8 +83,13 @@
       var Navbar = React.createClass({
         getDefaultProps: function(){
           return {
-            brand: 'ReactLayout'
+            brand: "ReactLayout",
+            page: 'Home'
           }
+        },
+
+        change(page){
+          this.props.change(page);
         },
 
         render: function(){
@@ -95,9 +103,9 @@
                  </div>
                  <div id="navbar">
                     <ul className="nav navbar-nav">
-                      <li className={(this.props.currentPage === 'home') ? 'active' : '' } ><a href="#">Home</a></li>
-                      <li className={(this.props.currentPage === 'contact') ? 'active' : '' } ><a href="#">Contact</a></li>
-                      <li className={(this.props.currentPage === 'about') ? 'active' : '' } ><a href="#">About</a></li>
+                      <li className={(this.props.currentPage === 'home') ? 'active' : '' } ><a href="#" onClick={this.change.bind(this, 'home')}>Home</a></li>
+                      <li className={(this.props.currentPage === 'contact') ? 'active' : '' } ><a href="#" onClick={this.change.bind(this, 'contact')}>Contact</a></li>
+                      <li className={(this.props.currentPage === 'about') ? 'active' : '' } ><a href="#" onClick={this.change.bind(this, 'about')}>About</a></li>
                     </ul>
                  </div>
                 </div>
@@ -110,7 +118,7 @@
 
       ReactDOM.render(
         <Theme />,
-        document.getElementById('greeting-div')
+        document.getElementById("root")
       );
     </script>
   </body>
