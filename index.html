@@ -16,12 +16,17 @@
     <script type="text/babel">
 
       var Theme = React.createClass({
+        getInitialState(){
+          return {
+            currentPage: 'home'
+          }
+        },
         render: function() {
           return (
           <div>
-            <Navbar currentPage='home' brand="ReactLayout"/>
+            <Navbar currentPage={this.state.currentPage} brand="ReactLayout"/>
             <Jumbotron heading="Hello there" text="This is a simple project demonstrating the usage of React"/>
-            <Page currentPage='home'/>
+            <Page currentPage={this.state.currentPage} />
           </div>
           )
         }
@@ -83,9 +88,9 @@
                  </div>
                  <div id="navbar">
                     <ul className="nav navbar-nav">
-                      <li className={(this.props.currentPage === 'home' ?) ? 'active' : '' } ><a href="#">Home</a></li>
-                      <li className={(this.props.currentPage === 'contact' ?) ? 'active' : '' } ><a href="#">Contact</a></li>
-                      <li className={(this.props.currentPage === 'about' ?) ? 'active' : '' } ><a href="#">About</a></li>
+                      <li className={(this.props.currentPage === 'home') ? 'active' : '' } ><a href="#">Home</a></li>
+                      <li className={(this.props.currentPage === 'contact') ? 'active' : '' } ><a href="#">Contact</a></li>
+                      <li className={(this.props.currentPage === 'about') ? 'active' : '' } ><a href="#">About</a></li>
                     </ul>
                  </div>
                 </div>
