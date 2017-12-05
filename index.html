@@ -32,10 +32,16 @@
           }
         },
         render: function() {
+          var jumbotronContent;
+          if (this.state.currentPage === 'home'){
+            jumbotronContent = <Jumbotron heading={this.props.heading} text={this.props.text}/>;
+          } else {
+            jumbotronContent = '';
+          }
           return (
           <div>
             <Navbar currentPage={this.state.currentPage} brand={this.props.brand} change={this.handleChange}/>
-            <Jumbotron heading={this.props.heading} text={this.props.text}/>
+            {jumbotronContent}
             <Page currentPage={this.state.currentPage} />
           </div>
           )
